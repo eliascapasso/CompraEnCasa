@@ -39,12 +39,12 @@ public class VendedorActivity extends AppCompatActivity {
                     break;
             }
 
-            if (FragmentTransaction) {
+            /*if (FragmentTransaction) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_default, fragment)
                         .commit();
                 item.setCheckable(true);
-            }
+            }*/
             return true;
         }
 

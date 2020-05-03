@@ -24,7 +24,18 @@ public class Categoria {
             "Belleza",
             "Informática",
             "Regalería",
-            "Juguetería"};;
+            "Juguetería",
+            "Mueblería",
+            "Vivero",
+            "Bicicletería",
+            "Heladería",
+            "Decoración",
+            "Artesanía",
+            "Marroquinería",
+            "Drugstore",
+            "Maxikiosco",
+            "Kiosco",
+            "Almacén"};;
 
     public static ArrayList<String> getCategorias() {
         //Devuelve todas las categorias ordenadas

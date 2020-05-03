@@ -8,7 +8,6 @@
     tools:context="com.eliascapasso.compraencasa.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="56dp"
@@ -22,28 +21,32 @@
 
         <Button
             android:id="@+id/btnVender"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#FF0000"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/borde_redondo"
             android:text="VENDER"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btnComprar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="16dp"
-            android:background="#FF0000"
+            android:background="@drawable/borde_redondo"
             android:text="COMPRAR"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/btnVender"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -57,7 +60,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colortrans"

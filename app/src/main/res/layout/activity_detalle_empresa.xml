@@ -19,7 +19,7 @@
                 android:id="@+id/tblDetalleEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="#FF0000"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/vback"
@@ -29,7 +29,7 @@
                 android:id="@+id/imgFotoDetalle"
                 android:layout_width="match_parent"
                 android:layout_height="127dp"
-                android:src="@drawable/addimage4"
+                android:src="@drawable/sinimagen"
                 app:civ_border_color="@color/colorAccent"
                 app:civ_border_width="2sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -70,11 +70,32 @@
                 android:paddingHorizontal="15dp">
 
                 <TextView
-                    android:id="@+id/tvUbicacion"
+                    android:id="@+id/tvCiudades"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="   Ubicacion"
                     android:drawableStart="@drawable/ubicacion"
+                    android:text="   Ciudades"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colortrans"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp">
+
+                <TextView
+                    android:id="@+id/tvDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="   Direccion"
+                    android:drawableStart="@drawable/direccion"
                     android:textAlignment="textStart"
                     android:textColor="@color/colortrans"
                     android:textStyle="bold" />

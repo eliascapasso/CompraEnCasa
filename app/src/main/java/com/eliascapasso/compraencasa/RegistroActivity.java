@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eliascapasso.compraencasa.model.Categoria;
@@ -94,7 +96,7 @@ public class RegistroActivity extends AppCompatActivity {
         mBtnReg = (Button)findViewById(R.id.btnregistro);
         mImgPerfil = (ImageView)findViewById(R.id.imgLogoReg);
 
-        progress = new ProgressDialog(this);
+        progress = new ProgressDialog(RegistroActivity.this);
 
         categorias();
 
@@ -114,9 +116,30 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validarCampos()){
-                    startRegistar();
-                    Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if(uriLogo != null){
+                        startRegistar();
+                        Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else{
+                        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(RegistroActivity.this);
+                        dialogo1.setTitle("Importante");
+                        dialogo1.setMessage("¿Seguro que quiere registrarse sin subir una foto?");
+                        dialogo1.setCancelable(false);
+                        dialogo1.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogo1, int id) {
+                                startRegistar();
+                                Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                        dialogo1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogo1, int id) {
+
+                            }
+                        });
+                        dialogo1.show();
+                    }
                 }
             }
         });
@@ -161,8 +184,7 @@ public class RegistroActivity extends AppCompatActivity {
                         guardar(downloadURL);
 
                     } else {
-                        // Handle failures
-                        // ...
+
                     }
                 }
             });
@@ -173,14 +195,10 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void guardar(String downloadURL){
-        /*progress.setMessage("Registrando...");
-        progress.show();
-        progress.setCanceledOnTouchOutside(false);*/
-
         String id_usu = UUID.randomUUID().toString();
 
         // Creamos una referencia a donde guardaremos los datos
-        final DatabaseReference referencia = databaseReference.child("PRODUCTOS").child(id_usu);
+        final DatabaseReference referencia = databaseReference.child("USUARIOS").child(id_usu);
 
         // Guardamos los datos
         String urlInstagram = txtInstagram.getText().toString();
@@ -204,7 +222,7 @@ public class RegistroActivity extends AppCompatActivity {
         empresa.setCiudad(txtCiudades.getText().toString());
         empresa.setUrlFacebook(txtFacebook.getText().toString());
         empresa.setUrlInstagram(urlInstagram);
-        empresa.setImagenLogo(uriLogo.toString()); //no se usa
+        empresa.setImagenLogo(downloadURL); //no se usa
 
         referencia.child("idEmpresa").setValue(id_usu);
         referencia.child("nombreEmpresa").setValue(empresa.getNombreEmpresa());
@@ -380,6 +398,30 @@ public class RegistroActivity extends AppCompatActivity {
                 }
             });
         }
+
+        TextView tv = new TextView(getApplicationContext());
+        final EditText et = new EditText(getApplicationContext());
+        Space espacio2 = new Space(getApplicationContext());
+
+        tv.setText("¿No encuentra su rubro?");
+        et.setHint("Escriba su rubro");
+        et.setId(codigo);
+        tv.setTextColor(Color.BLACK);
+
+        et.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(et.getText().toString().isEmpty()){
+                    return false;
+                }
+                else{
+                    if(!categoriasSelecionada.contains(et.getText().toString())){
+                        categoriasSelecionada += et.getText().toString();
+                    }
+                    return true;
+                }
+            }
+        });
     }
 
     private boolean validarCampos(){
@@ -397,12 +439,8 @@ public class RegistroActivity extends AppCompatActivity {
         }
 
         //TELEFONO CELULAR
-        if(txtMovil.getText().toString().isEmpty() && txtFijo.getText().toString().isEmpty()){
-            Toast.makeText(RegistroActivity.this, "Debe ingresar almenos un número de teléfono", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else{
-            if(!movilValido(txtMovil.getText().toString())){
+        if(!txtMovil.getText().toString().isEmpty()) {
+            if (!movilValido(txtMovil.getText().toString())) {
                 Toast.makeText(RegistroActivity.this, "El teléfono móvil ingresado no es válido", Toast.LENGTH_SHORT).show();
                 return false;
             }
@@ -427,6 +465,15 @@ public class RegistroActivity extends AppCompatActivity {
         //CATEGORIAS
         if(txtCategorias.getText().toString().isEmpty()){
             Toast.makeText(RegistroActivity.this, "Seleccione almenos un rubro", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //CAMPOS VACIOS
+        if(txtMovil.getText().toString().isEmpty()
+                && txtFijo.getText().toString().isEmpty()
+                && txtFacebook.getText().toString().isEmpty()
+                && txtInstagram.getText().toString().isEmpty()){
+            Toast.makeText(RegistroActivity.this, "Debe ingresar almenos una red social o un número telefonico", Toast.LENGTH_LONG).show();
             return false;
         }
 

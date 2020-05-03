@@ -16,7 +16,6 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tblregV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
@@ -26,7 +25,6 @@
                 app:titleTextColor="@android:color/white"/>
 
             <ImageView
-                android:id="@+id/imgperfilV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/addimage" />
@@ -47,14 +45,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ciudad"
                 android:paddingHorizontal="15dp"/>
 
             <Spinner
-                android:id="@+id/spCiudadesV"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingHorizontal="15dp"/>
@@ -65,7 +61,6 @@
                 android:paddingHorizontal="15dp">
 
                 <EditText
-                    android:id="@+id/txtNombreDuenioV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -80,7 +75,6 @@
                 android:paddingHorizontal="15dp">
 
                 <EditText
-                    android:id="@+id/txtDireccionV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -94,7 +88,6 @@
                 android:paddingHorizontal="15dp">
 
                 <EditText
-                    android:id="@+id/txtCorreoV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Correo Electrónico"
@@ -104,7 +97,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Caracteristica sin 0 y Telefono sin 15"
@@ -116,7 +108,6 @@
                 android:paddingHorizontal="15dp">
 
                 <EditText
-                    android:id="@+id/txtTelefonoMovilV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -126,7 +117,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Switch
-                android:id="@+id/swTieneWspV"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:text="¿Tiene Whatsapp?"
@@ -139,7 +129,6 @@
                 android:paddingHorizontal="15dp">
 
                 <EditText
-                    android:id="@+id/txtTelefonoFijoV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -149,20 +138,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Categoría"
                 android:paddingHorizontal="15dp" />
 
             <Spinner
-                android:id="@+id/spCategoriaV"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingHorizontal="15dp" />
 
             <Button
-                android:id="@+id/btnActualizar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"

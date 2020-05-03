@@ -8,7 +8,6 @@
     tools:context="com.eliascapasso.compraencasa.EnMantenimientoActivity">
 
     <ImageView
-        android:id="@+id/imgMantenimiento"
         android:layout_width="298dp"
         android:layout_height="492dp"
         android:layout_marginTop="24dp"

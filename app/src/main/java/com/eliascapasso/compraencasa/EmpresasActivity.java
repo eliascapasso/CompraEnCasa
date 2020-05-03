@@ -129,7 +129,7 @@ public class EmpresasActivity extends AppCompatActivity {
     private void listarDatos(){
         progressDialog.setMessage("Cargando..");
         progressDialog.show();
-        databaseReference.child("PRODUCTOS").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("USUARIOS").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<Empresa> empresas = new ArrayList<Empresa>();

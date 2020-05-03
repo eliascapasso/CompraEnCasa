@@ -19,7 +19,7 @@
                 android:id="@+id/tblreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="#FF0000"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/vback"
@@ -92,7 +92,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcCiudad"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/ubicacion" />
@@ -121,7 +120,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcDireccion"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/direccion" />
@@ -148,7 +146,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcCorreo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/correo" />
@@ -170,7 +167,6 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Caracteristica sin 0 y Telefono sin 15"
@@ -183,7 +179,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcMovil"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/llamada" />
@@ -211,7 +206,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcWsp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/whatsapp" />
@@ -232,7 +226,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcFijo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/telefono" />
@@ -260,7 +253,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIcRubro"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/rubros" />
@@ -289,7 +281,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/facebook" />
@@ -316,7 +307,6 @@
                 android:paddingHorizontal="15dp">
 
                 <ImageView
-                    android:id="@+id/imgIg"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/instagram" />

@@ -21,7 +21,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
     private String ciudad;
     private String rubro;
     private String correo;
-    private String ubicacion;
+    private String direccion;
     private String nombreEncargado;
     private String nombreEmpresa;
     private String telefonoFijo;
@@ -34,7 +34,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    private TextView tvNombreTitulo, tvUbicacion;
+    private TextView tvNombreTitulo, tvCiudades, tvDireccion;
     private Button btnEnviarWsp, btnLlamarFijo, btnLlamarMovil, btnFacebook, btnInstagram;
     private ImageView imgLogo;
 
@@ -44,7 +44,8 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_empresa);
 
         tvNombreTitulo = (TextView)findViewById(R.id.tvNombreTitulo);
-        tvUbicacion = (TextView)findViewById(R.id.tvUbicacion);
+        tvCiudades = (TextView)findViewById(R.id.tvCiudades);
+        tvDireccion = (TextView)findViewById(R.id.tvDireccion);
         btnLlamarFijo = (Button)findViewById(R.id.btnLlamarFijo);
         btnLlamarMovil = (Button)findViewById(R.id.btnLlamarMovil);
         btnEnviarWsp = (Button)findViewById(R.id.btnEnviarWsp);
@@ -119,8 +120,8 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         }
 
         tvNombreTitulo.setText("   " + nombreTitulo);
-        ubicacion = "   " + ciudad + ", " + ubicacion;
-        tvUbicacion.setText(ubicacion);
+        tvCiudades.setText("   " + ciudad);
+        tvDireccion.setText("   " + direccion);
 
         //CELULAR
         if(telefonoMovil.isEmpty() || telefonoMovil == null){
@@ -169,16 +170,17 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         rubro = extras.getString("categoria");
         correo = extras.getString("correo");
         nombreEncargado = extras.getString("nombreEncargado");
-        ubicacion = extras.getString("direccion");
+        direccion = extras.getString("direccion");
         nombreEmpresa = extras.getString("nombreEmpresa");
         telefonoFijo = extras.getString("telefonoFijo");
         telefonoMovil = extras.getString("telefonoMovil");
         tieneWsp = extras.getBoolean("tieneWsp");
         urlFacebook = extras.getString("urlFacebook");
         urlInstagram = extras.getString("urlInstagram");
-        imagen = Uri.parse(extras.getString("imagenLogo"));
+        String urlLogo = extras.getString("imagenLogo");
+        imagen = Uri.parse(urlLogo);
 
-        if(imagen != null || imagen != Uri.parse("")){
+        if(!urlLogo.isEmpty() && urlLogo != null){
             Glide.with(DetalleEmpresaActivity.this)
                     .load(imagen)
                     .fitCenter()
