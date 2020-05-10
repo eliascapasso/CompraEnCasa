@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fotofondo"
     tools:context="com.eliascapasso.compraencasa.MainActivity">
+
+    <include layout="@layout/video_fondo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -20,43 +21,63 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/btnVender"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/borde_redondo"
-            android:text="VENDER"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <Button
             android:id="@+id/btnComprar"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/borde_redondo"
             android:text="COMPRAR"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/btnVender"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.969"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnVender"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/borde_redondo"
+            android:text="VENDER"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="143dp"
-            android:layout_height="140dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnComprar"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvConsulta"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/iconocompra" />
+
+        <TextView
+            android:id="@+id/tvConsulta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autoLink="phone"
+            android:text="@string/consulta"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar

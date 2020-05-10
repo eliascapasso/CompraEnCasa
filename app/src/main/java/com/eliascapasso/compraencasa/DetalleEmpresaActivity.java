@@ -28,6 +28,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
     private String telefonoMovil;
     private String urlFacebook;
     private String urlInstagram;
+    private String sitioWeb;
     private Uri imagen;
     private boolean tieneWsp;
     private String nombreTitulo;
@@ -35,7 +36,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private TextView tvNombreTitulo, tvCiudades, tvDireccion;
-    private Button btnEnviarWsp, btnLlamarFijo, btnLlamarMovil, btnFacebook, btnInstagram;
+    private Button btnEnviarWsp, btnLlamarFijo, btnLlamarMovil, btnFacebook, btnInstagram, btnSitioWeb;
     private ImageView imgLogo;
 
     @Override
@@ -51,6 +52,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         btnEnviarWsp = (Button)findViewById(R.id.btnEnviarWsp);
         btnFacebook = (Button)findViewById(R.id.btnFacebook);
         btnInstagram = (Button)findViewById(R.id.btnInstagram);
+        btnSitioWeb = (Button)findViewById(R.id.btnSitioWeb);
         imgLogo = (ImageView)findViewById(R.id.imgFotoDetalle);
 
         recibirDatos();
@@ -93,6 +95,15 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
                 Uri uriInstagram = Uri.parse(urlInstagram);
                 Intent ventanaIg = new Intent(Intent.ACTION_VIEW, uriInstagram);
                 startActivity(ventanaIg);
+            }
+        });
+
+        btnSitioWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uriWeb = Uri.parse(sitioWeb);
+                Intent ventanaWeb = new Intent(Intent.ACTION_VIEW, uriWeb);
+                startActivity(ventanaWeb);
             }
         });
 
@@ -162,6 +173,14 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         else{
             btnInstagram.setVisibility(View.VISIBLE);
         }
+
+        //WEB
+        if(sitioWeb.isEmpty() || sitioWeb == null){
+            btnSitioWeb.setVisibility(View.GONE);
+        }
+        else{
+            btnSitioWeb.setVisibility(View.VISIBLE);
+        }
     }
 
     private void recibirDatos(){
@@ -177,6 +196,7 @@ public class DetalleEmpresaActivity extends AppCompatActivity {
         tieneWsp = extras.getBoolean("tieneWsp");
         urlFacebook = extras.getString("urlFacebook");
         urlInstagram = extras.getString("urlInstagram");
+        sitioWeb = extras.getString("sitioWeb");
         String urlLogo = extras.getString("imagenLogo");
         imagen = Uri.parse(urlLogo);
 

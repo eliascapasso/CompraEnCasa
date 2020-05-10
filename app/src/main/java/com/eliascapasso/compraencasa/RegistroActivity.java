@@ -52,7 +52,7 @@ import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
     // Varibales de registo
-    private EditText txtNombreEmpresa, txtNombreDuenio, txtDireccion, txtMovil, txtFijo, txtFacebook, txtInstagram, txtCorreo, txtCiudades, txtCategorias;
+    private EditText txtNombreEmpresa, txtNombreDuenio, txtDireccion, txtMovil, txtFijo, txtFacebook, txtInstagram, txtCorreo, txtCiudades, txtCategorias, txtSitioWeb;
     private Switch swTieneWsp;
     private Button mBtnReg;
     private ImageView mImgPerfil;
@@ -90,6 +90,7 @@ public class RegistroActivity extends AppCompatActivity {
         txtCorreo = (EditText)findViewById(R.id.txtCorreo);
         txtCiudades = (EditText)findViewById(R.id.txtCiudades);
         txtCategorias = (EditText)findViewById(R.id.txtCategorias);
+        txtSitioWeb = (EditText)findViewById(R.id.txtSitioWeb);
 
         swTieneWsp = (Switch)findViewById(R.id.swTieneWsp);
 
@@ -190,7 +191,7 @@ public class RegistroActivity extends AppCompatActivity {
             });
         }
         else{
-            guardar("");
+            guardar("https://firebasestorage.googleapis.com/v0/b/simplecompra-a96b0.appspot.com/o/fotos%2FSin%20Foto%2Fsinimagen.jpg?alt=media&token=58ceafca-524d-46a2-9e20-8a367606a768");
         }
     }
 
@@ -205,7 +206,7 @@ public class RegistroActivity extends AppCompatActivity {
         if(urlInstagram.indexOf(0) == '@'){
             urlInstagram = urlInstagram.substring(1, urlInstagram.length());
         }
-        if(!urlInstagram.contains("www.instagram.com")){
+        if(!urlInstagram.contains("www.instagram.com") && !urlInstagram.isEmpty()){
             urlInstagram = "https://www.instagram.com/" + urlInstagram;
         }
 
@@ -221,6 +222,7 @@ public class RegistroActivity extends AppCompatActivity {
         empresa.setCategoria(txtCategorias.getText().toString());
         empresa.setCiudad(txtCiudades.getText().toString());
         empresa.setUrlFacebook(txtFacebook.getText().toString());
+        empresa.setSitioWeb(txtSitioWeb.getText().toString());
         empresa.setUrlInstagram(urlInstagram);
         empresa.setImagenLogo(downloadURL); //no se usa
 
@@ -236,6 +238,7 @@ public class RegistroActivity extends AppCompatActivity {
         referencia.child("categoria").setValue(empresa.getCategoria());
         referencia.child("urlFacebook").setValue(empresa.getUrlFacebook());
         referencia.child("urlInstagram").setValue(empresa.getUrlInstagram());
+        referencia.child("sitioWeb").setValue(empresa.getSitioWeb());
 
         referencia.child("imagenLogo").setValue(downloadURL);
     }
@@ -341,6 +344,18 @@ public class RegistroActivity extends AppCompatActivity {
 
         inicializarCategorias(dialogView);
 
+        TextView tv = new TextView(getApplicationContext());
+        final EditText et = new EditText(getApplicationContext());
+        Space espacio2 = new Space(getApplicationContext());
+
+        tv.setText("¿No encuentra su rubro?");
+        et.setHint("Escriba su rubro");
+        tv.setTextColor(Color.BLACK);
+
+        llCategorias.addView(espacio2);
+        llCategorias.addView(tv);
+        llCategorias.addView(et);
+
         builder.setCancelable(false);
         builder.setView(dialogView);
         final AlertDialog dialog = builder.create();
@@ -348,7 +363,13 @@ public class RegistroActivity extends AppCompatActivity {
         dialog.setButton(Dialog.BUTTON_POSITIVE,"Aceptar",new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(!categoriasSelecionada.isEmpty()){
+                if(!et.getText().toString().isEmpty()){
+                    if(!categoriasSelecionada.contains(et.getText().toString())){
+                        categoriasSelecionada += et.getText().toString();
+                    }
+                }
+
+                if(categoriasSelecionada.substring(categoriasSelecionada.length() - 1, categoriasSelecionada.length()) == "- "){
                     categoriasSelecionada = categoriasSelecionada.substring(0, categoriasSelecionada.length() - 2);
                 }
 
@@ -398,30 +419,6 @@ public class RegistroActivity extends AppCompatActivity {
                 }
             });
         }
-
-        TextView tv = new TextView(getApplicationContext());
-        final EditText et = new EditText(getApplicationContext());
-        Space espacio2 = new Space(getApplicationContext());
-
-        tv.setText("¿No encuentra su rubro?");
-        et.setHint("Escriba su rubro");
-        et.setId(codigo);
-        tv.setTextColor(Color.BLACK);
-
-        et.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(et.getText().toString().isEmpty()){
-                    return false;
-                }
-                else{
-                    if(!categoriasSelecionada.contains(et.getText().toString())){
-                        categoriasSelecionada += et.getText().toString();
-                    }
-                    return true;
-                }
-            }
-        });
     }
 
     private boolean validarCampos(){

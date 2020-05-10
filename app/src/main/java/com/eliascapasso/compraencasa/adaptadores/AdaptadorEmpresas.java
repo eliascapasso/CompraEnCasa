@@ -12,8 +12,14 @@ import com.bumptech.glide.Glide;
 import com.eliascapasso.compraencasa.FilaEmpresaActivity;
 import com.eliascapasso.compraencasa.model.Empresa;
 import com.eliascapasso.compraencasa.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 public class AdaptadorEmpresas extends BaseAdapter {
     Context contexto;

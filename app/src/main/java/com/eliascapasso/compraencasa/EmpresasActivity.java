@@ -112,6 +112,7 @@ public class EmpresasActivity extends AppCompatActivity {
                 detalleEmpresa.putExtra("tieneWsp", empresa.getTieneWsp());
                 detalleEmpresa.putExtra("urlFacebook", empresa.getUrlFacebook());
                 detalleEmpresa.putExtra("urlInstagram", empresa.getUrlInstagram());
+                detalleEmpresa.putExtra("sitioWeb", empresa.getSitioWeb());
                 detalleEmpresa.putExtra("imagenLogo", empresa.getImagenLogo());
                 startActivity(detalleEmpresa);
             }

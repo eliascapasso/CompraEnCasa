@@ -11,11 +11,12 @@ public class Empresa {
     private Boolean tieneWsp;
     private String categoria;
     private String correo;
+    private String sitioWeb;
     private String urlFacebook;
     private String urlInstagram;
     private String imagenLogo;
 
-    public Empresa(String idEmpresa, String facebook, String instagram, String imagenLogo, String correo, String categoria, String nombreEmpresa, String nombreEncargado, String ciudad, String direccion, String telefonoFijo, String telefonoMovil, Boolean tieneWsp) {
+    public Empresa(String idEmpresa, String sitioWeb, String facebook, String instagram, String imagenLogo, String correo, String categoria, String nombreEmpresa, String nombreEncargado, String ciudad, String direccion, String telefonoFijo, String telefonoMovil, Boolean tieneWsp) {
         this.nombreEmpresa = nombreEmpresa;
         this.nombreEncargado = nombreEncargado;
         this.ciudad = ciudad;
@@ -29,10 +30,19 @@ public class Empresa {
         this.imagenLogo = imagenLogo;
         this.urlFacebook = facebook;
         this.urlInstagram = instagram;
+        this.sitioWeb = sitioWeb;
     }
 
     public Empresa(){
 
+    }
+
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
     }
 
     public String getUrlFacebook() {

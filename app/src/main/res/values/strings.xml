@@ -3,6 +3,7 @@
     <string name="title_home">Inicio</string>
     <string name="title_products">Productos</string>
     <string name="title_notifications">Perfil</string>
+    <string name="consulta"><u>¿Tienes una consulta?</u></string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
